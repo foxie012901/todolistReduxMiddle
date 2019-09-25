@@ -20,7 +20,8 @@ import {
     getOnChangeData,
     getChangeInputValue,
     getOpenId,
-    initListAction
+    initListAction,
+    getInitSaga
 } from "../../store/actionCreators";
 // import { CHANGE_INPUT_VALUE } from '../../store/actionTypes';
 
@@ -42,18 +43,8 @@ export default class MSaga extends Component {
         store.subscribe(this._handleStoreChange)
     }
     componentDidMount() {
-        axios.get('http://localhost.charlesproxy.com:3000/list.json').then((res) => {
-            let { status, data } = res.data
-            if (status === 200) {
-                console.log(data)
-                const action = initListAction(data)
-                store.dispatch(action)
-            } else {
-                console.log('请求数据失败')
-            }
-        })
-
-
+        const action = getInitSaga()
+        store.dispatch(action)
 
         this.setState({
             isShow: false

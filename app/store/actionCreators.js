@@ -3,6 +3,7 @@ import {
     CHANGE_INPUT_VALUE,
     OPEN_ID,
     INIT_LIST_ACTION,
+    GET_INIT_SAGA
 } from "./actionTypes";
 
 import axios from 'axios'
@@ -25,5 +26,9 @@ export const getOpenId = index => ({
 export const initListAction = data => ({
     type: INIT_LIST_ACTION,
     data
+})
+
+export const getInitSaga =()=>({
+    type:GET_INIT_SAGA
 })
 
